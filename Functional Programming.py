@@ -55,7 +55,21 @@ def not_empty(s):
 #         n=next(it)
 #         yield n
 #         it=filter(_not_divisible(n),it)
+'''
+判断一个数是否是回数
+'''
+# def is_palindrome(n):
+#     i,m=n,0
+#     while i:
+#         m=m*10+i%10
+#         i=i/10
+#     if m==n:
+#         return n
 
+def is_palindrome(n):
+    chars = str(n)
+    if chars == chars[::-1]:
+        return n
 
 '''
 map()的用法
@@ -106,3 +120,6 @@ print str2float('123.456')
 #
 # print '*****************'
 # print filter(_not_divisible(3),[1,2,3,4,5,6,7,8,9])
+print '***1000以内的回数***'
+output = filter(is_palindrome, range(1, 1000))
+print output
