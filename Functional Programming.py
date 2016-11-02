@@ -71,6 +71,9 @@ def is_palindrome(n):
     if chars == chars[::-1]:
         return n
 
+def by_name(t):
+    return str.lower(t[0])
+    # return t[0]
 '''
 map()的用法
 '''
@@ -101,7 +104,18 @@ print '*****************'
 s='123456'
 # t= {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}[s[0]]
 # print t
-
+'''
+sorted()函数用于排序
+'''
+print sorted([3,-2,-8,9,0,4,8,5,-6])
+print sorted(['bob', 'about', 'Zoo', 'Credit'])
+'''
+key 指定的函数将作用于list的每一个元素
+'''
+print sorted([36, 5, -12, 9, -21], key=abs)
+print sorted(['bob', 'about', 'Zoo', 'Credit'],key=str.lower)
+print sorted(['bob', 'about', 'Zoo', 'Credit'],key=str.lower,reverse=True)#反向排序
+print '*****************'
 print str2int(s)
 print str2int_o(s)
 print '*****************'
@@ -123,3 +137,12 @@ print str2float('123.456')
 print '***1000以内的回数***'
 output = filter(is_palindrome, range(1, 1000))
 print output
+print '*****************'
+L = [('Bob', 75), ('Adam', 92), ('bart', 66), ('Lisa', 88)]
+L2 = sorted(L, key=by_name)
+print(L2)
+
+
+
+
+
