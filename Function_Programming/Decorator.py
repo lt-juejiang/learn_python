@@ -1,6 +1,6 @@
 #!/user/bin/python
 #coding=utf-8
-
+import functools
 '''
 在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）
 '''
@@ -30,4 +30,51 @@ def now():
 
 print now()
 
+def log2(func):
+    @functools.wraps(func)
+    def wrapper(*args,**kw):
+        print('call %s():' %func.__name__)
+        return func(*args,**kw)
+    return wrapper
 
+
+print'*********************'
+def log3(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+
+@log3('excute')
+def now():
+    print ('2015-3-25')
+print now.__name__
+print'*********************'
+
+def log4(text = None):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            def printLog(s,text = None):
+                if text == None:
+                    print('%s %s():' % (s,func.__name__))
+                else:
+                    print('%s %s %s():' % (text,s,func.__name__))
+            printLog('before call',text)
+            func(*args, **kw)
+            printLog('end call',text)
+        return wrapper
+    return decorator
+
+@log4()
+def f1():
+    print('f1')
+
+@log4('test')
+def f2():
+    print('f2')
+print f1()
+print f2()
