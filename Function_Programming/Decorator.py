@@ -53,7 +53,9 @@ def now():
     print ('2015-3-25')
 print now.__name__
 print'*********************'
-
+'''
+可以同时支持带参数和不带参数的decorator
+'''
 def log4(text = None):
     def decorator(func):
         @functools.wraps(func)
@@ -78,3 +80,16 @@ def f2():
     print('f2')
 print f1()
 print f2()
+print'*********************'
+def log5(func):
+    @functools.wraps(func)
+    def wrapper(*args,**kw):
+        print('begin call %s():' %func.__name__)
+        func(*args,**kw)
+        print('end call %s():' %func.__name__)
+        # return func(*args,**kw)
+    return wrapper
+@log5
+def f3():
+    print 'pass'
+print f3()
