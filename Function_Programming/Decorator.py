@@ -5,6 +5,7 @@ import functools
 在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）
 '''
 def log(func):
+    print('a')
     def wrapper(*args,**kw):
         print('call %s():' % func.__name__)#函数对象有一个__name__属性，可以拿到函数的名字：
         return func(*args, **kw)
@@ -12,10 +13,10 @@ def log(func):
 
 @log
 def now():
-    print ('2015-3-25')
+    print('2015-3-25')
 
-print now()
-print'*********************'
+print(now())
+print('*********************')
 
 def log1(text):
     def decorator(func):
@@ -28,7 +29,7 @@ def log1(text):
 def now():
     print ('2015-3-25')
 
-print now()
+print(now())
 
 def log2(func):
     @functools.wraps(func)
@@ -38,7 +39,7 @@ def log2(func):
     return wrapper
 
 
-print'*********************'
+print('*********************')
 def log3(text):
     def decorator(func):
         @functools.wraps(func)
@@ -51,8 +52,8 @@ def log3(text):
 @log3('excute')
 def now():
     print ('2015-3-25')
-print now.__name__
-print'*********************'
+print (now.__name__)
+print('*********************')
 '''
 可以同时支持带参数和不带参数的decorator
 '''
@@ -78,9 +79,9 @@ def f1():
 @log4('test')
 def f2():
     print('f2')
-print f1()
-print f2()
-print'*********************'
+print(f1())
+print(f2())
+print('*********************')
 def log5(func):
     @functools.wraps(func)
     def wrapper(*args,**kw):
@@ -91,5 +92,5 @@ def log5(func):
     return wrapper
 @log5
 def f3():
-    print 'pass'
-print f3()
+    print('pass')
+print(f3())

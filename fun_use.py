@@ -29,7 +29,7 @@ def same(num, *kw):
 # 函数调用
 result = same(-10.5, sqrt, abs, tan)
 # 结果输出
-print result
+print (result)
 '''
 运用双层循环求出一个list中各个元素在不同计算方法下的结果
 '''
@@ -37,4 +37,4 @@ def do_expr(x=[],*kw):
     return(f(x_k) for x_k in x for f in kw)
 
 for n in do_expr([1,4,9,16],sqrt,abs):
-    print n
+    print (n)

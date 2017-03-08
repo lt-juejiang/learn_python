@@ -5,9 +5,9 @@ from collections import Iterable
 d = {'a': 1, 'b': 2, 'c': 3}
 t=isinstance(d, Iterable)
 if t:
-    print t
+    print (t)
     for key in d:
-        print key
+        print (key)
     print('***********************')
     for value in d.values():
         print (value)
